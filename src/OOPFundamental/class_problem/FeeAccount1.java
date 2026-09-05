@@ -3,84 +3,64 @@ public class FeeAccount1 {
 
     String studentName;
     int studentId;
-    FeeAccount feeAccount;
-    HostelRoom hostelRoom;
+    FeeAccount fee;
+    HostelRoom room;
 
     static int totalStudents = 0;
 
-    FeeAccount1(String studentName, int studentId,
-                FeeAccount feeAccount, HostelRoom hostelRoom) {
-
-        this.studentName = studentName;
-        this.studentId = studentId;
-        this.feeAccount = feeAccount;
-        this.hostelRoom = hostelRoom;
-
+    FeeAccount1(String name, int id, FeeAccount fee, HostelRoom room) {
+        studentName = name;
+        studentId = id;
+        this.fee = fee;
+        this.room = room;
         totalStudents++;
     }
 
-    void fullProfile() {
-
-        System.out.println("Student Name: " + studentName);
+    void display() {
+        System.out.println("Name: " + studentName);
         System.out.println("Student ID: " + studentId);
+        System.out.println("Fee Balance: " + fee.balance);
 
-        System.out.println("Fee Balance: Rs " + feeAccount.getBalance());
-
-        if (hostelRoom != null) {
-            System.out.println("Hostel Room: " + hostelRoom.roomNo);
-            System.out.println("Room Type: " + hostelRoom.roomType);
+        if (room != null) {
+            System.out.println("Room No: " + room.roomNo);
         } else {
-            System.out.println("Hostel Room: Not Allocated");
+            System.out.println("Room: Not Allocated");
         }
-
         System.out.println();
-    }
-
-    static void printTotalStudents() {
-        System.out.println("Total Students: " + totalStudents);
     }
 
     public static void main(String[] args) {
 
         FeeAccount f1 = new FeeAccount(50000);
         FeeAccount f2 = new FeeAccount(30000);
-        FeeAccount f3 = new FeeAccount(45000);
 
-        HostelRoom h1 = new HostelRoom(101, "Single");
-        HostelRoom h2 = new HostelRoom(202, "Double");
+        HostelRoom r1 = new HostelRoom(101);
+        HostelRoom r2 = new HostelRoom(102);
 
-        FeeAccount1 s1 = new FeeAccount1("Aditi", 1001, f1, h1);
-        FeeAccount1 s2 = new FeeAccount1("Rohan", 1002, f2, h2);
-        FeeAccount1 s3 = new FeeAccount1("Meera", 1003, f3, null);
+        FeeAccount1 s1 = new FeeAccount1("Aditi", 1001, f1, r1);
+        FeeAccount1 s2 = new FeeAccount1("Rohan", 1002, f2, r2);
 
-        s1.fullProfile();
-        s2.fullProfile();
-        s3.fullProfile();
+        s1.display();
+        s2.display();
 
-        printTotalStudents();
+        System.out.println("Total Students: " + totalStudents);
     }
 }
 
 class FeeAccount {
 
-    private double balance;
+    double balance;
 
     FeeAccount(double balance) {
         this.balance = balance;
-    }
-
-    double getBalance() {
-        return balance;
     }
 }
 
 class HostelRoom {
 
     int roomNo;
-    String roomType;
 
-    HostelRoom(int roomNo, String roomType) {
+    HostelRoom(int roomNo) {
         this.roomNo = roomNo;
-        this.roomType = roomType;
     }
 }
