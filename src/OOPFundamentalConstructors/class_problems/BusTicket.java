@@ -1,6 +1,4 @@
 package OOPFundamentalConstructors.class_problems;
-package OOPFundamental.class_problem;
-
 import java.util.HashSet;
 
 public class BusTicket {
