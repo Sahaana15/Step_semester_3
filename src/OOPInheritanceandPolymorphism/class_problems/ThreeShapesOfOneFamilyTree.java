@@ -5,6 +5,10 @@ class EventTicket {
     protected double balanceDue;
 
     public EventTicket(String attendeeId, double basePrice) {
+        if (attendeeId == null || attendeeId.trim().length() < 4) {
+            throw new IllegalArgumentException();
+        }
+
         this.attendeeId = attendeeId;
         this.basePrice = basePrice;
         this.balanceDue = basePrice;
