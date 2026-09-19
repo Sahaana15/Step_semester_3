@@ -64,7 +64,6 @@ public class CheckoutPaymentHandler {
 
         System.out.println(cash.processPayment(40.0));
 
-        // Upcasting
         PaymentMethod ref = cc;
 
         printConfirmation(ref, 250.0);
